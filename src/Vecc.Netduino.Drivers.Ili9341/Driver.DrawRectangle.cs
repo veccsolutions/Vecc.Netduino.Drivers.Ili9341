@@ -8,9 +8,9 @@ namespace Vecc.Netduino.Drivers.Ili9341
             var y1 = (y + height);
 
             DrawVerticalLine(x, y, height, color); //left
-            DrawVerticalLine(x1, y, height, color); //right
+            DrawVerticalLine(x1, y, height + 1, color); //right
             DrawHorizontalLine(x, y, width, color); //top
-            DrawHorizontalLine(x, y1, width, color); //bottom
+            DrawHorizontalLine(x, y1, width + 1, color); //bottom
         }
     }
 }
