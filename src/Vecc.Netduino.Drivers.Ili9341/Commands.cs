@@ -1,7 +1,4 @@
-﻿using System;
-using Microsoft.SPOT;
-
-namespace Vecc.Netduino.Drivers.Ili9341
+﻿namespace Vecc.Netduino.Drivers.Ili9341
 {
     public enum Commands
     {

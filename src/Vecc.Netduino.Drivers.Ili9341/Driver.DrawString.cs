@@ -26,7 +26,7 @@ namespace Vecc.Netduino.Drivers.Ili9341
                     }
 
                     DrawChar(currentX, y, color, character);
-                    currentX += character.Width;
+                    currentX += character.Width + character.Space;
                 }
             }
         }

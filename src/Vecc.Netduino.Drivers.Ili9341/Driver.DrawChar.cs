@@ -6,23 +6,42 @@ namespace Vecc.Netduino.Drivers.Ili9341
         {
             lock (this)
             {
-                var pixels = new ushort[character.Width * character.Height];
-
                 SetWindow(x, x + character.Width - 1, y, y + character.Height - 1);
 
-                for (var pixel = 0; pixel < character.Data.Length; pixel++)
-                {
-                    var data = character.Data[pixel];
+                var pixels = new ushort[character.Width * character.Height];
+                var pixelPosition = 0;
 
-                    pixels[7 + (pixel * 8)] = (data & 0x80) != 0 ? (ushort)color : (ushort)0;
-                    pixels[6 + (pixel * 8)] = (data & 0x40) != 0 ? (ushort)color : (ushort)0;
-                    pixels[5 + (pixel * 8)] = (data & 0x20) != 0 ? (ushort)color : (ushort)0;
-                    pixels[4 + (pixel * 8)] = (data & 0x10) != 0 ? (ushort)color : (ushort)0;
-                    pixels[3 + (pixel * 8)] = (data & 0x8) != 0 ? (ushort)color : (ushort)0;
-                    pixels[2 + (pixel * 8)] = (data & 0x4) != 0 ? (ushort)color : (ushort)0;
-                    pixels[1 + (pixel * 8)] = (data & 0x2) != 0 ? (ushort)color : (ushort)0;
-                    pixels[0 + (pixel * 8)] = (data & 0x1) != 0 ? (ushort)color : (ushort)0;
+                for (var segmentIndex = 0; segmentIndex < character.Data.Length; segmentIndex++)
+                {
+                    var segment = character.Data[segmentIndex];
+                    if (pixelPosition < pixels.Length) { pixels[pixelPosition] = (segment & 0x80) != 0 ? (ushort)color : (ushort)0; pixelPosition++; }
+                    if (pixelPosition < pixels.Length) { pixels[pixelPosition] = (segment & 0x40) != 0 ? (ushort)color : (ushort)0; pixelPosition++; }
+                    if (pixelPosition < pixels.Length) { pixels[pixelPosition] = (segment & 0x20) != 0 ? (ushort)color : (ushort)0; pixelPosition++; }
+                    if (pixelPosition < pixels.Length) { pixels[pixelPosition] = (segment & 0x10) != 0 ? (ushort)color : (ushort)0; pixelPosition++; }
+                    if (pixelPosition < pixels.Length) { pixels[pixelPosition] = (segment & 0x8) != 0 ? (ushort)color : (ushort)0; pixelPosition++; }
+                    if (pixelPosition < pixels.Length) { pixels[pixelPosition] = (segment & 0x4) != 0 ? (ushort)color : (ushort)0; pixelPosition++; }
+                    if (pixelPosition < pixels.Length) { pixels[pixelPosition] = (segment & 0x2) != 0 ? (ushort)color : (ushort)0; pixelPosition++; }
+                    if (pixelPosition < pixels.Length) { pixels[pixelPosition] = (segment & 0x1) != 0 ? (ushort)color : (ushort)0; pixelPosition++; }
                 }
+
+                //uncomment this to see the characters in the debug window that would be displayed on the screen.
+                //var currentBuffer = string.Empty;
+                //for (var pixel = 0; pixel < pixels.Length; pixel++)
+                //{
+                //    if (pixels[pixel] > 0)
+                //    {
+                //        currentBuffer += "X";
+                //    }
+                //    else
+                //    {
+                //        currentBuffer += "-";
+                //    }
+                //    if (currentBuffer.Length >= character.Width)
+                //    {
+                //        Debug.Print(currentBuffer);
+                //        currentBuffer = string.Empty;
+                //    }
+                //}
 
                 SendData(pixels);
             }

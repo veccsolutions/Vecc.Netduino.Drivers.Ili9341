@@ -1,6 +1,6 @@
+using System.Threading;
 using Microsoft.SPOT.Hardware;
 using SecretLabs.NETMF.Hardware.Netduino;
-using System.Threading;
 
 namespace Vecc.Netduino.Drivers.Ili9341
 {

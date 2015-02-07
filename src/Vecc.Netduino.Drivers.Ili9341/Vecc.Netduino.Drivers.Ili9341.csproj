@@ -29,6 +29,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="NetduinoHelperFonts\VerdanaBold14.cs" />
+    <Compile Include="NetduinoHelperFonts\Verdana9.cs" />
+    <Compile Include="NetduinoHelperFonts\Verdana14.cs" />
+    <Compile Include="NetduinoHelperFonts\DejaVuMonoBold8.cs" />
+    <Compile Include="NetduinoHelperFonts\DejaVuMono8.cs" />
+    <Compile Include="NetduinoHelperFonts\DejaVuSans9.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="FontCharacter.cs" />
     <Compile Include="Commands.cs" />
@@ -39,6 +45,9 @@
     <Compile Include="Driver.DrawRectangle.cs" />
     <Compile Include="Driver.DrawString.cs" />
     <Compile Include="Driver.DrawVerticalLine.cs" />
+    <Compile Include="NetduinoHelperFonts\DejaVuSansCondensed9.cs" />
+    <Compile Include="NetduinoHelperFonts\DejaVuSansBold9.cs" />
+    <Compile Include="NetduinoHelpersFont.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StandardFixedWidthFont.cs" />
   </ItemGroup>
