@@ -38,15 +38,25 @@ namespace Vecc.Netduino.Drivers.Ili9341
 
         public override FontCharacter GetFontData(char character)
         {
-            var characterIndex = (character - ' ');
-            var result = new FontCharacter
+            var characterIndex = character - ' ';
+            if (characterIndex < 0 || characterIndex > _bitmaps.Length)
             {
-                Data = _bitmaps[character - ' '],
+                return new FontCharacter
+                {
+                    Data = null,
+                    Height = _height,
+                    Width = 0,
+                    Space = 0
+                };
+            }
+
+            return new FontCharacter
+            {
+                Data = _bitmaps[characterIndex],
                 Height = _height,
                 Width = _widths[characterIndex],
                 Space = 0
             };
-            return result;
         }
 
         private byte[] BuildBitmap(byte width, byte[] segments, int characterPadPixels)
