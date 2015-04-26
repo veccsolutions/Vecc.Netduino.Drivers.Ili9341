@@ -1,6 +1,7 @@
 using System.Threading;
 using Microsoft.SPOT.Hardware;
-using SecretLabs.NETMF.Hardware.Netduino;
+// using SecretLabs.NETMF.Hardware.Netduino; 
+//Poundy: changed to remove netduino dependencies
 
 namespace Vecc.Netduino.Drivers.Ili9341
 {
@@ -51,7 +52,7 @@ namespace Vecc.Netduino.Drivers.Ili9341
                                                  spiModule   // The used SPI bus (refers to a MOSI MISO and SCLK pin set)
                                                  ));
             _dataCommandPort = new OutputPort(dataCommandPin, false);
-            if (resetPin != Pins.GPIO_NONE)
+            if (resetPin != Cpu.Pin.GPIO_NONE)  //Poundy: changed to remove netduino dependencies
             {
                 _resetPort = new OutputPort(resetPin, false);
             }
@@ -59,7 +60,7 @@ namespace Vecc.Netduino.Drivers.Ili9341
             {
                 _resetPort = null;
             }
-            if (backlightPin != Pins.GPIO_NONE)
+            if (backlightPin != Cpu.Pin.GPIO_NONE) //Poundy: changed to remove netduino dependencies
             {
                 _backlightPort = new OutputPort(backlightPin, false);
             }
