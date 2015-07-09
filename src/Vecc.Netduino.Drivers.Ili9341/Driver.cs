@@ -7,7 +7,7 @@ namespace Vecc.Netduino.Drivers.Ili9341
 {
     public partial class Driver
     {
-        const byte lcdPortraitConfig = 8;
+        const byte lcdPortraitConfig = 8|0x40;  //Change for reversed portrait letters issue
         const byte lcdLandscapeConfig = 44;
 
         private readonly OutputPort _dataCommandPort;
